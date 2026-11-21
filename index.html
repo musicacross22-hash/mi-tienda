@@ -33,12 +33,11 @@
     position: relative;
   }
 
-  /* Logo Pokémon */
+  /* Logo */
   header .logo {
     width: 160px;
     margin-bottom: 15px;
   }
-  /* Usé logo oficial Pokémon SVG libre en web */
   header .logo img {
     width: 100%;
     height: auto;
@@ -62,7 +61,6 @@
     text-shadow: 1px 1px 3px #1a3091;
   }
 
-  /* Contenido principal */
   main {
     width: 100%;
     max-width: 960px;
@@ -76,59 +74,99 @@
     align-items: center;
   }
 
-  /* Imagen producto */
-  .producto-imagen {
-    width: 90%;
-    max-width: 350px;
+  /* Título "¿Qué hay de nuevo?" con tipografía elegante */
+  .novedades-titulo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 3.2rem;
+    color: #3b4cca;
+    text-shadow:
+      2px 2px 0 #fddd5e,
+      4px 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+    font-style: italic;
+    letter-spacing: 3px;
+  }
+
+  /* Productos lado a lado */
+  .productos-container {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .producto {
+    width: 320px;
     border-radius: 25px;
     box-shadow: 0 15px 40px rgba(56, 94, 249, 0.3);
+    padding: 25px 20px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fefefe;
     transition: transform 0.4s ease;
   }
 
-  .producto-imagen:hover {
+  .producto:hover {
     transform: scale(1.07);
   }
 
-  /* Nombre producto */
-  .producto-nombre {
-    margin-top: 40px;
-    font-weight: 800;
-    font-size: 2.4rem;
-    color: #3b4cca;
-    text-align: center;
-    text-shadow: 1px 1px 3px #b3bfff;
-    letter-spacing: 1.5px;
+  .producto img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(56, 94, 249, 0.25);
   }
 
-  /* Precio */
+  .producto-nombre {
+    margin-top: 25px;
+    font-weight: 800;
+    font-size: 2.1rem;
+    color: #3b4cca;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px #b3bfff;
+  }
+
   .precio {
     margin-top: 20px;
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #f4a261;
     text-shadow: 1px 1px 2px #ab6d2f;
   }
 
-  /* Botón compra */
-  .boton-compra {
-    margin-top: 45px;
-    background: linear-gradient(145deg, #83a3f9 0%, #4068f8 100%);
+  /* Contenedor botones func */
+  .botones-funcion {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  /* Botones actions */
+  button.func-btn {
+    background: linear-gradient(135deg, #83a3f9 0%, #4068f8 100%);
     color: white;
-    padding: 20px 55px;
-    font-size: 1.4rem;
-    font-weight: 900;
+    padding: 16px 45px;
+    font-size: 1.2rem;
+    font-weight: 700;
     border: none;
-    border-radius: 60px;
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 10px 30px #4068f8aa;
+    box-shadow: 0 10px 28px #4068f8aa;
     transition: all 0.3s ease;
     user-select: none;
-    letter-spacing: 1px;
+    min-width: 180px;
   }
-  .boton-compra:hover {
+  button.func-btn:hover {
     background: linear-gradient(145deg, #4068f8 0%, #2a49bb 100%);
     box-shadow: 0 15px 45px #2a49bbbb;
-    transform: translateY(-5px);
+    transform: translateY(-6px);
   }
 
   /* Footer */
@@ -140,23 +178,25 @@
   }
 
   /* Responsive */
-  @media (max-width: 540px) {
-    header h1 {
-      font-size: 2rem;
+  @media (max-width: 700px) {
+    .productos-container {
+      flex-direction: column;
+      align-items: center;
     }
-    main {
-      margin: 30px 15px 60px;
-      padding: 30px 20px 50px;
+    .producto {
+      width: 90%;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
     }
-    .producto-nombre {
-      font-size: 1.8rem;
+    .botones-funcion {
+      max-width: 90vw;
+      gap: 20px;
     }
-    .precio {
-      font-size: 1.5rem;
-    }
-    .boton-compra {
-      font-size: 1.2rem;
-      padding: 16px 45px;
+    button.func-btn {
+      min-width: auto;
+      flex-grow: 1;
+      padding: 14px 25px;
+      font-size: 1.1rem;
     }
   }
 </style>
@@ -172,13 +212,49 @@
 </header>
 
 <main role="main">
-  <img class="producto-imagen" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario - Urshifu V Single Strike" />
-  <div class="producto-nombre">Caja Pokémon 30 Aniversario</div>
-  <div class="precio">$250.000 CLP</div>
-  <button class="boton-compra" aria-label="Comprar Caja Pokémon 30 Aniversario">Comprar ahora</button>
+  <div class="novedades-titulo">¿QUÉ HAY DE NUEVO?</div>
+
+  <div class="productos-container">
+    <article class="producto">
+      <img src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario - Producto 1" />
+      <div class="producto-nombre">Caja Pokémon 30 Aniversario</div>
+      <div class="precio">$250.000 CLP</div>
+    </article>
+    <article class="producto">
+      <img src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario - Producto 2" />
+      <div class="producto-nombre">Caja Pokémon 30 Aniversario</div>
+      <div class="precio">$250.000 CLP</div>
+    </article>
+  </div>
+
+  <div class="botones-funcion">
+    <button class="func-btn" onclick="abrirWhatsApp()">Contacto WhatsApp</button>
+    <button class="func-btn" onclick="mostrarDescuentos()">Descuentos</button>
+    <button class="func-btn" onclick="abrirMetodosPago()">Métodos de Pago</button>
+  </div>
 </main>
 
 <footer></footer>
+
+<script>
+  // Botón WhatsApp: cambia el número por el tuyo:
+  function abrirWhatsApp() {
+    const numero = '56912345678'; // Poner tu número con código país y sin signos
+    const url = `https://wa.me/${numero}`;
+    window.open(url, '_blank');
+  }
+
+  // Botón descuentos: muestra alerta, puedes ampliar si quieres con modales o secciones
+  function mostrarDescuentos() {
+    alert('¡Aprovecha nuestros descuentos exclusivos! Contáctanos por WhatsApp para más información.');
+  }
+
+  // Botón métodos de pago: abre URL donde puedan pagar (cámbiala)
+  function abrirMetodosPago() {
+    const url = 'https://www.tusitiodepagos.cl'; // Cambia esta URL a tu sitio o plataforma de pagos
+    window.open(url, '_blank');
+  }
+</script>
 
 </body>
 </html>
