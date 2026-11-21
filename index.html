@@ -3,312 +3,270 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pokémon TCG Store - 30 Aniversario</title>
+<title>Tienda Pokémon TCG - 30 Aniversario</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-  /* Reset básico */
+  /* Reset */
   *, *::before, *::after {
     margin: 0; padding: 0; box-sizing: border-box;
   }
-
-  /* Fuente principal */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
   body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f3f5f7;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background: #f9fbfd url('https://archives.bulbagarden.net/media/upload/9/96/Pattern_Pok%C3%A9_Ball.png') repeat;
+    background-size: 75px 75px;
+    color: #2c3e50;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  /* --- BARRA SUPERIOR PRINCIPAL --- */
-  .top-bar {
-    background-color: #fafafa;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  /* Navegación superior */
+  nav {
+    background-color: #13294b;
+    color: #f8f9fa;
+    padding: 16px 60px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 8px 50px;
-    font-size: 0.9rem;
-    user-select: none;
-  }
-
-  .top-bar .shipping {
-    font-weight: 600;
-  }
-
-  .top-bar .search-container {
-    flex-grow: 1;
-    margin: 0 25px;
-    position: relative;
-  }
-
-  .top-bar input[type="search"] {
-    width: 100%;
-    padding: 9px 15px;
-    border: 1.5px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-
-  .top-bar input[type="search"]:focus {
-    outline: none;
-    border-color: #3b4cca;
-  }
-
-  .top-bar .icons {
-    display: flex;
-    gap: 20px;
-    font-size: 1.4rem;
-  }
-
-  /* --- BARRA DE NAVEGACIÓN --- */
-  nav.main-nav {
-    background-color: #111;
-    color: #eee;
-    padding: 12px 50px;
-    display: flex;
-    gap: 24px;
-    font-weight: 600;
-  }
-  nav.main-nav a {
-    color: #eee;
-    font-size: 1rem;
-    padding: 4px 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  nav.main-nav a:hover,
-  nav.main-nav a:focus {
-    background-color: #3b4cca;
-    outline: none;
-  }
-
-  /* --- BANNER PRINCIPAL --- */
-  .hero-banner {
-    max-width: 1200px;
-    margin: 48px auto 32px;
-    display: flex;
     align-items: center;
-    background-color: #121a42;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 10px 50px rgb(59 76 202 / 0.5);
-    padding: 48px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   }
-
-  .hero-banner .hero-text {
-    flex: 1 1 50%;
-    color: white;
+  nav .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    cursor: default;
+    user-select: none;
+    color: #ffcb05;
   }
-
-  .hero-banner small.tag {
-    background-color: #f73a84;
-    padding: 8px 30px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    border-radius: 30px;
-    box-shadow: 0 0 18px rgb(247 58 132 / 0.5);
-    display: inline-block;
-    margin-bottom: 25px;
-    letter-spacing: 1.5px;
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-weight: 600;
   }
-
-  .hero-banner h1 {
-    font-size: 3.7rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  }
-  .hero-banner button {
-    background-color: #5bce23;
-    color: #111;
-    font-weight: 800;
-    font-size: 1.3rem;
-    padding: 16px 55px;
-    border: none;
-    border-radius: 40px;
+  nav ul li {
     cursor: pointer;
-    box-shadow: 0 12px 42px rgb(91 206 35 / 0.8);
-    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
   }
-  .hero-banner button:hover,
-  .hero-banner button:focus {
-    background-color: #4ebb1e;
+  nav ul li:hover {
+    color: #ffcb05;
+  }
+
+
+  /* Banner principal */
+  header.hero-banner {
+    max-width: 1200px;
+    margin: 48px auto 36px;
+    display: flex;
+    background: linear-gradient(135deg, #1f396e, #3e5bbb);
+    border-radius: 36px;
+    overflow: hidden;
+    padding: 60px 60px 60px 80px;
+    box-shadow: 0 20px 60px rgba(30, 48, 101, 0.9);
+  }
+  header.hero-banner .hero-text {
+    flex: 1 1 50%;
+    color: #f5f7fd;
+  }
+  header.hero-banner small.tag {
+    display: inline-block;
+    background-color: #f74e5c;
+    padding: 10px 32px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 120px;
+    margin-bottom: 30px;
+    letter-spacing: 1.8px;
+    box-shadow: 0 0 18px rgba(247, 78, 92, 0.7);
+  }
+  header.hero-banner h1 {
+    font-size: 4.2rem;
+    font-weight: 900;
+    margin-bottom: 28px;
+    letter-spacing: 3.5px;
+    line-height: 1.1;
+    text-shadow: 2px 3px 12px rgba(0, 0, 0, 0.6);
+  }
+  header.hero-banner p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 36px;
+    color: #e0e9ffcc;
+  }
+  header.hero-banner button {
+    background-color: #ffcb05;
+    border: none;
+    border-radius: 54px;
+    cursor: pointer;
+    padding: 18px 64px;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1b2955;
+    box-shadow: 0 15px 45px rgba(255, 203, 5, 0.85);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  header.hero-banner button:hover,
+  header.hero-banner button:focus {
+    background-color: #ffd94c;
+    box-shadow: 0 20px 70px rgba(255, 220, 53, 0.95);
     outline: none;
   }
-
-  .hero-banner .hero-img {
+  header.hero-banner .hero-img {
     flex: 1 1 45%;
-    user-select: none;
-    max-height: 420px;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px #0007);
-    transition: transform 0.3s ease;
+    max-height: 480px;
+    user-select: none;
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.8));
+    transition: transform 0.4s ease;
   }
-  .hero-banner .hero-img:hover {
-    transform: scale(1.05);
+  header.hero-banner .hero-img:hover {
+    transform: scale(1.08);
   }
 
-  /* --- BANNER SECUNDARIO --- */
-  .secondary-banner {
+
+  /* Banner secundario */
+  section.secondary-banner {
     max-width: 1200px;
     margin: 0 auto 60px;
-    background-color: #f5f6fa;
-    border-radius: 24px;
-    box-shadow: 0 14px 45px rgb(0 0 0 / 0.05);
+    background: #f9fbfd;
+    border-radius: 30px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
     display: flex;
+    padding: 40px 60px;
     align-items: center;
-    padding: 38px 50px;
   }
-
-  .secondary-banner .content {
+  section.secondary-banner .content {
     flex-basis: 65%;
-    padding-right: 32px;
+    padding-right: 44px;
   }
-
-  .secondary-banner .content small {
-    color: #979797;
+  section.secondary-banner .content small {
     font-weight: 700;
     font-size: 0.9rem;
-    letter-spacing: 1.1px;
-    margin-bottom: 6px;
+    color: #adb5bd;
+    margin-bottom: 8px;
     display: block;
   }
-  .secondary-banner .content h2 {
+  section.secondary-banner .content h2 {
+    font-weight: 900;
     font-size: 2.8rem;
-    font-weight: 800;
-    color: #111;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #212529;
   }
-  .secondary-banner .content button {
-    background: #111;
-    color: white;
+  section.secondary-banner .content button {
+    background: #212529;
     border: none;
-    padding: 14px 48px;
+    color: white;
+    padding: 16px 60px;
+    font-weight: 700;
+    font-size: 1.1rem;
     border-radius: 36px;
-    font-size: 1.12rem;
-    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  .secondary-banner .content button:hover,
-  .secondary-banner .content button:focus {
-    background-color: #333;
+  section.secondary-banner .content button:hover,
+  section.secondary-banner .content button:focus {
+    background-color: #495057;
     outline: none;
   }
-
-  .secondary-banner .images {
+  section.secondary-banner .images {
     flex-basis: 35%;
     display: flex;
-    gap: 24px;
+    gap: 28px;
     justify-content: flex-end;
   }
-
-  .secondary-banner .images img {
-    width: 120px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  section.secondary-banner .images img {
+    width: 128px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgb(0 0 0 / 0.1);
     object-fit: contain;
     user-select: none;
     transition: transform 0.3s ease;
   }
-  .secondary-banner .images img:hover {
-    transform: scale(1.1);
+  section.secondary-banner .images img:hover {
+    transform: scale(1.15);
   }
 
-  /* --- SECCIÓN BEST SELLERS --- */
+  /* Sección best sellers */
   main {
     max-width: 1200px;
-    margin: 0 auto 80px;
+    margin: 0 auto 100px;
     padding: 0 20px;
   }
-  main h2 {
+  main h2.section-title {
     font-weight: 700;
-    font-size: 2.9rem;
-    color: #2f3dab;
-    margin-bottom: 8px;
+    font-size: 2.98rem;
+    color: #1b2955;
+    letter-spacing: 1.4px;
+    margin-bottom: 12px;
   }
   main p.subtitle {
-    color: #555;
-    margin-bottom: 36px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 500;
+    color: #495057;
+    font-size: 1.12rem;
+    margin-bottom: 44px;
   }
-
   .best-sellers {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
   }
-
   .product-card {
     background: white;
-    border-radius: 26px;
-    box-shadow: 0 6px 30px rgba(50, 217, 72, 0.15);
+    border-radius: 28px;
+    box-shadow: 0 16px 45px rgb(50 217 72 / 0.15);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    user-select: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-    padding-bottom: 25px;
   }
   .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 55px rgba(50,217,72,0.4);
+    box-shadow: 0 26px 70px rgb(50 217 72 / 0.4);
+    transform: translateY(-12px);
   }
-
   .product-image {
-    border-radius: 26px 26px 0 0;
-    background-color: #def4e7;
-    box-shadow: inset 0 0 16px #92d595aa;
-    object-fit: contain;
     height: 280px;
     width: 100%;
-    padding: 10px 10px 0 10px;
+    object-fit: contain;
+    box-shadow: inset 0 0 16px rgb(146 213 137 / 0.5);
+    background-color: #e3f7db;
+    border-radius: 28px 28px 0 0;
+    padding: 8px 8px 0 8px;
+    transition: transform 0.3s ease;
   }
-
+  .product-card:hover .product-image {
+    transform: scale(1.07);
+  }
   .product-info {
-    padding: 24px 18px 0;
+    padding: 28px 22px 22px;
+    text-align: center;
+    flex-grow: 1;
   }
-
   .product-title {
     font-weight: 700;
     font-size: 1.28rem;
-    color: #2f3dab;
-    letter-spacing: 0.02em;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    color: #1b2955;
   }
-
   .product-price {
     font-weight: 900;
-    font-size: 1.45rem;
+    font-size: 1.47rem;
     color: #32d948;
-    text-shadow: 1px 1px 3px rgba(50,217,72,0.45);
+    text-shadow: 1px 1px 4px rgba(50,217,72,0.5);
   }
-
   .product-card button {
-    margin-top: 22px;
-    padding: 14px 60px;
-    font-weight: 700;
-    font-size: 1.15rem;
+    margin-top: 32px;
+    padding: 14px 68px;
+    font-weight: 800;
+    font-size: 1.12rem;
     border: none;
     border-radius: 48px;
     background-color: #32d948;
     color: white;
     cursor: pointer;
-    box-shadow: 0 12px 40px #32d948cc;
+    box-shadow: 0 16px 50px rgb(50 217 72 / 0.65);
     transition: background-color 0.3s ease;
   }
   .product-card button:hover,
@@ -319,62 +277,53 @@
 
   /* Footer */
   footer {
-    background-color: #000d10;
-    padding: 24px 0;
-    color: #1f9f3c;
+    background-color: #1b2955;
+    padding: 28px 0;
+    color: #a1d290;
     font-weight: 600;
     text-align: center;
     font-size: 1rem;
-    letter-spacing: 1.5px;
     user-select: none;
-    box-shadow: inset 0 5px 10px #1f9f3c88;
+    letter-spacing: 1.6px;
+    box-shadow: inset 0 6px 15px #2f425f;
   }
 
   /* Responsive */
   @media (max-width: 1024px) {
     header.hero-banner {
       flex-direction: column;
-      padding: 50px 40px;
+      padding: 40px 40px;
       text-align: center;
     }
-    header.hero-banner .hero-img {
-      width: 100%;
-      max-width: 380px;
-      margin-top: 30px;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.5));
+    header.hero-banner img.hero-img {
+      max-width: 360px;
+      margin-top: 38px;
     }
   }
 
   @media (max-width: 600px) {
     nav {
-      padding: 8px 24px;
+      padding: 14px 28px;
       font-size: 0.95rem;
     }
     nav ul {
-      gap: 18px;
+      gap: 16px;
     }
     main {
-      padding: 0 10px 80px;
-    }
-    header.hero-banner {
-      padding: 40px 20px;
-    }
-    header.hero-banner h1 {
-      font-size: 2.6rem;
+      padding: 0 12px 80px;
     }
     .best-sellers {
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 35px;
     }
   }
-
 </style>
 </head>
 <body>
 
-<!-- Barra superior -->
+<!-- Barra Superior -->
 <nav role="navigation" aria-label="Barra superior de navegación">
-  <div class="logo" aria-label="Logo tienda Pokémon TCG">Pokémon TCG</div>
+  <div class="logo" aria-label="Logo Tienda Pokémon">Pokémon TCG</div>
   <ul role="menubar" aria-label="Categorías principales">
     <li role="menuitem" tabindex="0">Magic</li>
     <li role="menuitem" tabindex="0">Yu-Gi-Oh!</li>
@@ -389,46 +338,44 @@
   </ul>
 </nav>
 
-<!-- Banner principal -->
+<!-- Banner Principal -->
 <header class="hero-banner" role="banner" aria-label="Banner principal promocional">
   <div class="hero-text">
-    <small class="tag" aria-label="Etiqueta Nuevo Producto">NUEVO</small>
+    <small class="tag" aria-label="Etiqueta Nuevo">¡NUEVO!</small>
     <h1>CAJA POKÉMON 30 ANIVERSARIO</h1>
     <p>Disfruta del lanzamiento especial de la caja Pokémon edición 30 aniversario, con contenido exclusivo para coleccionistas.</p>
-    <button aria-label="Comprar caja especial 30 aniversario" onclick="alert('¡Gracias por tu compra!')">Comprar ahora</button>
+    <button aria-label="Comprar Caja Pokémon 30 Aniversario" onclick="alert('Gracias por tu compra. ¡Pronto tendrás tu caja!')">Comprar ahora</button>
   </div>
-  <img class="hero-img" src="https://archives.bulbagarden.net/media/upload/a/ad/Pokemon_Box_30th_Anniversary.png" alt="Caja Pokémon 30 Aniversario" />
+  <img src="https://archives.bulbagarden.net/media/upload/a/ad/Pokemon_Box_30th_Anniversary.png" alt="Caja Pokémon 30 Aniversario" class="hero-img" />
 </header>
 
-<!-- Banner secundario -->
-<section class="secondary-banner" aria-label="Promoción secundaria">
+<!-- Banner Secundario -->
+<section class="secondary-banner" aria-label="Banner promocional secundario">
   <div class="promo-content">
-    <small>NUEVO</small>
+    <small>¡NUEVO!</small>
     <h2>Las 10 cartas que todos quieren del 30 Aniversario</h2>
-    <button aria-label="Leer más sobre las cartas">Leer ahora</button>
+    <button aria-label="Leer más sobre las cartas" onclick="alert('Próximamente más información')">Leer ahora</button>
   </div>
   <div class="promo-cards">
     <img src="https://images.pokemontcg.io/swsh11/85.png" alt="Carta Pokémon Urshifu V" />
-    <img src="https://images.pokemontcg.io/swsh10/175_hires.png" alt="Carta Pokémon otro ejemplo" />
-    <img src="https://images.pokemontcg.io/swsh11/25.png" alt="Carta Pokémon otro ejemplo" />
+    <img src="https://images.pokemontcg.io/swsh10/175_hires.png" alt="Carta Pokémon Delibird" />
+    <img src="https://images.pokemontcg.io/swsh11/104.png" alt="Carta Pokémon Delibird" />
   </div>
 </section>
 
-<!-- Main sección productos -->
+<!-- Sección Productos -->
 <main>
-
   <h2 class="section-title">LOS MÁS VENDIDOS</h2>
-  <p class="section-subtitle">Nuestras cajas más populares del 30 aniversario</p>
+  <p class="subtitle">Nuestras cajas más populares del 30 aniversario</p>
 
   <section class="best-sellers" role="list" aria-label="Listado de productos más vendidos">
-
-    <!-- Producto repetido 5 veces -->
+    <!-- Cinco productos idénticos -->
     <article class="product-card" role="listitem" tabindex="0">
       <img class="product-image" src="https://archives.bulbagarden.net/media/upload/a/ad/Pokemon_Box_30th_Anniversary.png" alt="Caja Pokémon 30 Aniversario" />
       <div class="product-info">
         <div class="product-title">Caja Pokémon 30 Aniversario</div>
         <div class="product-price">$250,000 CLP</div>
-        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto al carrito">Agregar al carrito</button>
+        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto a carrito">Agregar al carrito</button>
       </div>
     </article>
     <article class="product-card" role="listitem" tabindex="0">
@@ -436,7 +383,7 @@
       <div class="product-info">
         <div class="product-title">Caja Pokémon 30 Aniversario</div>
         <div class="product-price">$250,000 CLP</div>
-        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto al carrito">Agregar al carrito</button>
+        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto a carrito">Agregar al carrito</button>
       </div>
     </article>
     <article class="product-card" role="listitem" tabindex="0">
@@ -444,7 +391,7 @@
       <div class="product-info">
         <div class="product-title">Caja Pokémon 30 Aniversario</div>
         <div class="product-price">$250,000 CLP</div>
-        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto al carrito">Agregar al carrito</button>
+        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto a carrito">Agregar al carrito</button>
       </div>
     </article>
     <article class="product-card" role="listitem" tabindex="0">
@@ -452,7 +399,7 @@
       <div class="product-info">
         <div class="product-title">Caja Pokémon 30 Aniversario</div>
         <div class="product-price">$250,000 CLP</div>
-        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto al carrito">Agregar al carrito</button>
+        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto a carrito">Agregar al carrito</button>
       </div>
     </article>
     <article class="product-card" role="listitem" tabindex="0">
@@ -460,16 +407,13 @@
       <div class="product-info">
         <div class="product-title">Caja Pokémon 30 Aniversario</div>
         <div class="product-price">$250,000 CLP</div>
-        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto al carrito">Agregar al carrito</button>
+        <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar producto a carrito">Agregar al carrito</button>
       </div>
     </article>
-
   </section>
-
 </main>
 
-<!-- Footer simple -->
-<footer class="page-footer">
+<footer>
   © 2026 Pokémon TCG Store Chile. Todos los derechos reservados.
 </footer>
 
