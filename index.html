@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pokémon TCG 30 Aniversario - Tienda Oficial</title>
+<title>Tienda Pokémon TCG 30 Aniversario</title>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -123,12 +123,14 @@
     color: #3b4cca;
     margin-bottom: 10px;
     letter-spacing: 1.3px;
+    font-family: 'Montserrat', sans-serif;
   }
   p.section-subtitle {
     color: #555;
     margin-bottom: 34px;
     font-weight: 500;
     font-size: 1.12rem;
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* Carrusel */
@@ -226,7 +228,7 @@
     transform: scale(1.05);
   }
 
-  /* Flechas carrerausel */
+  /* Navigation (flechas) */
   .arrow-btn {
     position: absolute;
     top: 48%;
@@ -252,7 +254,7 @@
     background: #ffd466;
   }
 
-  /* Contenedor puntos */
+  /* Dots */
   .dots-container {
     margin-top: 24px;
     display: flex;
@@ -264,7 +266,7 @@
     height: 14px;
     background: #e2e2e2;
     border-radius: 50%;
-    transition: background 0.4s ease, box-shadow 0.4s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
     box-shadow: 0 0 4px #aaa;
   }
@@ -319,8 +321,6 @@
       font-size: 20px;
     }
   }
-
-
 </style>
 </head>
 <body>
@@ -338,17 +338,17 @@
 
 <header class="hero" role="banner">
   <div class="texto-banner">
-    <small aria-label="Etiqueta Nuevo Producto">NEW</small>
-    <h1>30th Celebration Booster Bundle</h1>
+    <small aria-label="Etiqueta Nuevo Producto">NUEVO</small>
+    <h1>Caja Pokémon 30 Aniversario</h1>
     <p>¡Celebra el 30 aniversario con esta caja exclusiva! Contenido especial para fanáticos y coleccionistas.</p>
-    <button aria-label="Comprar caja 30 aniversario" onclick="alert('Compra realizada. ¡Gracias!')">Shop Now</button>
+    <button aria-label="Comprar caja 30 aniversario" onclick="alert('Compra realizada. ¡Gracias!')">Comprar Ahora</button>
   </div>
   <img src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
 </header>
 
 <main>
-  <h2 class="section-title">BEST SELLERS</h2>
-  <p class="section-subtitle">Mira nuestras cajas más vendidas del 30 Aniversario</p>
+  <h2 class="section-title">LOS MÁS VENDIDOS</h2>
+  <p class="section-subtitle">Nuestras cajas más populares del 30 aniversario</p>
 
   <div class="carousel-container" aria-roledescription="carousel" aria-label="Productos destacados">
 
@@ -356,7 +356,7 @@
 
     <div class="carousel-track" id="carouselTrack" tabindex="0" role="list" aria-live="polite" aria-atomic="true" aria-relevant="additions">
 
-      <!-- Producto repetido -->
+      <!-- Repetimos 5 veces el mismo producto -->
       <article class="product-card" role="listitem" tabindex="0">
         <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
         <div class="product-info">
@@ -365,7 +365,6 @@
           <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar Al Carrito">Agregar al carrito</button>
         </div>
       </article>
-
       <article class="product-card" role="listitem" tabindex="0">
         <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
         <div class="product-info">
@@ -374,7 +373,22 @@
           <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar Al Carrito">Agregar al carrito</button>
         </div>
       </article>
-
+      <article class="product-card" role="listitem" tabindex="0">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
+        <div class="product-info">
+          <div class="product-title">Caja Pokémon 30 Aniversario</div>
+          <div class="product-price">$250,000 CLP</div>
+          <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar Al Carrito">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="product-card" role="listitem" tabindex="0">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
+        <div class="product-info">
+          <div class="product-title">Caja Pokémon 30 Aniversario</div>
+          <div class="product-price">$250,000 CLP</div>
+          <button onclick="alert('Producto agregado: Caja Pokémon 30 Aniversario')" aria-label="Agregar Al Carrito">Agregar al carrito</button>
+        </div>
+      </article>
       <article class="product-card" role="listitem" tabindex="0">
         <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario" />
         <div class="product-info">
@@ -386,14 +400,16 @@
 
     </div>
 
+    <div class="dots-container" aria-label="Indicador de navegación de productos">
+      <span class="dot active" aria-current="true"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
     <button class="arrow-btn arrow-right" aria-label="Mover producto siguiente" id="btnNext">&#10095;</button>
 
-  </div>
-  
-  <div class="dots-container" aria-label="Indicador de navegación de productos">
-    <span class="dot active" aria-current="true"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
   </div>
 </main>
 
