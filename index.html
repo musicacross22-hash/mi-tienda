@@ -5,211 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pokémon TCG 30 Aniversario - Tienda Oficial</title>
 <style>
-  /* Fuentes */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  /* Reset y base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
   body {
-    margin: 0; padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: #f7f7f7;
-    color: #333;
-  }
-  /* Navegación */
-  nav {
-    background: #000;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  nav .logo {
-    font-weight: 800;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    color: #ffcb05;
-    margin-right: 50px;
-    font-family: 'Arial Black', Gadget, sans-serif;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
-  nav ul li {
-    cursor: pointer;
-    font-weight: 600;
-  }
-  nav ul li:hover {
-    color: #ffcb05;
-  }
-
-  /* Contenedor principal */
-  main {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
-  h2.seccion-titulo {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-    text-align: center;
-    color: #3b4cca;
-  }
-
-  /* Carrusel doble */
-
-  .carrusel-container {
-    display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .panel {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    max-width: 540px;
-    flex: 1 1 480px;
-    overflow: hidden;
+    background: linear-gradient(145deg, #f7ebe1 0%, #c1dbea 100%);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    color: #4a4a4a;
   }
 
-  .panel img {
+  /* Header */
+  header {
+    background: #3b4cca;
+    width: 100%;
+    padding: 35px 20px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Logo Pokémon */
+  header .logo {
+    width: 160px;
+    margin-bottom: 15px;
+  }
+  /* Usé logo oficial Pokémon SVG libre en web */
+  header .logo img {
     width: 100%;
     height: auto;
-    object-fit: cover;
   }
 
-  .panel-content {
-    padding: 25px 30px 35px;
+  header h1 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #fddd5e;
+    text-shadow: 2px 2px 6px #182d7d;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  header p {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #e3c068;
+    font-style: italic;
+    text-shadow: 1px 1px 3px #1a3091;
+  }
+
+  /* Contenido principal */
+  main {
+    width: 100%;
+    max-width: 960px;
+    background: white;
+    margin: 50px 20px 80px;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(56, 94, 249, 0.15);
+    padding: 40px 30px 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
   }
 
-  .panel-content h3 {
-    font-weight: 700;
+  /* Imagen producto */
+  .producto-imagen {
+    width: 90%;
+    max-width: 350px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(56, 94, 249, 0.3);
+    transition: transform 0.4s ease;
+  }
+
+  .producto-imagen:hover {
+    transform: scale(1.07);
+  }
+
+  /* Nombre producto */
+  .producto-nombre {
+    margin-top: 40px;
+    font-weight: 800;
+    font-size: 2.4rem;
     color: #3b4cca;
-    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px #b3bfff;
+    letter-spacing: 1.5px;
   }
 
-  .panel-content p {
-    color: #444;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  .btn-info {
-    background: #000;
-    border: none;
-    padding: 14px 40px;
-    font-weight: 700;
-    color: #ffcb05;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.3s ease;
-    align-self: flex-start;
+  /* Precio */
+  .precio {
     margin-top: 20px;
-    box-shadow: 0 5px 15px #ffcb05aa;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #f4a261;
+    text-shadow: 1px 1px 2px #ab6d2f;
   }
 
-  .btn-info:hover {
-    background: #222;
-  }
-
-  /* Flechas y puntos */
-
-  .nav-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 25px 0 40px;
-  }
-
-  .nav-btn {
-    width: 16px;
-    height: 16px;
-    background: #ddd;
-    border-radius: 50%;
+  /* Botón compra */
+  .boton-compra {
+    margin-top: 45px;
+    background: linear-gradient(145deg, #83a3f9 0%, #4068f8 100%);
+    color: white;
+    padding: 20px 55px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 60px;
     cursor: pointer;
-    box-shadow: 0 0 5px #ccc;
-    transition: background 0.3s ease;
+    box-shadow: 0 10px 30px #4068f8aa;
+    transition: all 0.3s ease;
+    user-select: none;
+    letter-spacing: 1px;
+  }
+  .boton-compra:hover {
+    background: linear-gradient(145deg, #4068f8 0%, #2a49bb 100%);
+    box-shadow: 0 15px 45px #2a49bbbb;
+    transform: translateY(-5px);
   }
 
-  .nav-btn.active {
-    background: #3b4cca;
-    box-shadow: 0 0 8px #3b4ccaaa;
-  }
-
-  /* Footer decorativo */
+  /* Footer */
   footer {
-    height: 70px;
     width: 100%;
-    background: linear-gradient(90deg, #ffcb05, #d4a200, #ffcb05);
-    border-top: 5px solid #a37900;
-    margin-top: 50px;
+    height: 80px;
+    background: #fddd5e;
+    border-top: 6px solid #3b4cca;
   }
 
   /* Responsive */
-
-  @media (max-width: 1150px) {
-    .carrusel-container {
-      flex-direction: column;
-      align-items: center;
+  @media (max-width: 540px) {
+    header h1 {
+      font-size: 2rem;
     }
-    .panel {
-      max-width: 90vw;
-      margin-bottom: 30px;
+    main {
+      margin: 30px 15px 60px;
+      padding: 30px 20px 50px;
+    }
+    .producto-nombre {
+      font-size: 1.8rem;
+    }
+    .precio {
+      font-size: 1.5rem;
+    }
+    .boton-compra {
+      font-size: 1.2rem;
+      padding: 16px 45px;
     }
   }
 </style>
 </head>
 <body>
 
-<nav role="navigation">
-  <div class="logo">Pokémon</div>
-  <ul>
-    <li>Expansiones</li>
-    <li>Cartas</li>
-    <li>Cómo jugar</li>
-    <li>Noticias</li>
-    <li>Dónde comprar</li>
-  </ul>
-</nav>
-
-<main>
-  <h2 class="seccion-titulo">¿QUÉ HAY DE NUEVO?</h2>
-
-  <div class="carrusel-container">
-
-    <section class="panel" aria-label="Productos de Megaevolución - Dominio Delta">
-      <img src="https://images.pokemontcg.io/swsh9/168_hires.png" alt="Productos de Megaevolución - Dominio Delta" />
-      <div class="panel-content">
-        <h3>Productos de Megaevolución - Dominio Delta de JCC Pokémon</h3>
-        <p>Explora las nuevas cajas de Megaevolución y Dominio Delta. Colecciónalas todas y disfruta de cartas exclusivas perfectas para tus batallas Pokémon.</p>
-        <button class="btn-info" aria-label="Más información sobre Megaevolución - Dominio Delta">¡Más información!</button>
-      </div>
-    </section>
-
-    <section class="panel" aria-label="Cartas Rotom Calor ex y más">
-      <img src="https://images.pokemontcg.io/swsh10/165_hires.png" alt="Rotom Calor ex y más Pokémon" />
-      <div class="panel-content">
-        <h3>Rotom Calor ex, Delibird y más en Dominio Delta</h3>
-        <p>Descubre a Rotom Calor ex y otros Pokémon increíbles del set Dominio Delta. ¡Prepara tu mazo para nuevas estrategias llenas de poder!</p>
-        <button class="btn-info" aria-label="Más información sobre Rotom Calor ex">¡Más información!</button>
-      </div>
-    </section>
-
+<header>
+  <div class="logo" aria-label="Logo oficial de Pokémon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Pok%C3%A9mon_logo.svg" alt="Logo Pokémon" />
   </div>
+  <h1>Pokémon TCG 30 Aniversario</h1>
+  <p>¡Compra tu caja edición especial ahora!</p>
+</header>
 
+<main role="main">
+  <img class="producto-imagen" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario - Urshifu V Single Strike" />
+  <div class="producto-nombre">Caja Pokémon 30 Aniversario</div>
+  <div class="precio">$250.000 CLP</div>
+  <button class="boton-compra" aria-label="Comprar Caja Pokémon 30 Aniversario">Comprar ahora</button>
 </main>
 
 <footer></footer>
