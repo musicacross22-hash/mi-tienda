@@ -3,312 +3,502 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tienda Pokémon TCG 30 Aniversario</title>
+<title>Pokémon TCG - Tienda 30 Aniversario</title>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
-  body {
-    margin: 0;
-    background: #f9fafc;
-    font-family: 'Poppins', sans-serif;
-    color: #222;
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
   }
-  header {
-    background: linear-gradient(135deg, #4a90e2, #a1c4fd);
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f8fd;
+    color: #222;
+    min-height: 100vh;
     display: flex;
-    padding: 40px;
+    flex-direction: column;
+  }
+
+  /* --- BANNER PRINCIPAL --- */
+  header.banner {
+    position: relative;
+    background: linear-gradient(135deg, #3b4cca 0%, #a0b9ff 100%);
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+    padding: 60px 100px 60px 80px;
     overflow: hidden;
   }
-  header .banner-text {
+
+  header.banner .texto-banner {
     max-width: 600px;
-  }
-  header .small-tag {
-    background: #ff5f7e;
     color: white;
-    padding: 6px 14px;
-    font-weight: 600;
+    z-index: 2;
+  }
+
+  header.banner .texto-banner small {
     font-size: 0.9rem;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 12px;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 2.6rem;
-    color: #111;
-    margin-bottom: 18px;
-  }
-  header button {
-    font-weight: 600;
-    padding: 12px 28px;
-    font-size: 1rem;
-    border: none;
-    background: #222;
-    color: white;
+    background: #ff2c79;
+    padding: 8px 20px;
     border-radius: 30px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  header button:hover {
-    background: #444;
-  }
-  header img {
-    width: 220px;
-    max-height: 280px;
-    object-fit: contain;
-    user-select: none;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    display: inline-block;
+    margin-bottom: 18px;
+    box-shadow: 0 0 12px rgba(255,44,121,0.7);
   }
 
-  main {
-    max-width: 1120px;
-    margin: 60px auto;
-    padding: 0 20px 80px;
-  }
-
-  .section-title {
+  header.banner .texto-banner h1 {
+    font-size: 3rem;
     font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 14px;
-  }
-  .section-subtitle {
-    color: #666;
-    margin-bottom: 30px;
-    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0,0,100,0.4);
   }
 
-  /* Carousel container */
+  header.banner .texto-banner button {
+    background: #111b72;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px #111b72cc;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  header.banner .texto-banner button:hover {
+    background: #556bff;
+    box-shadow: 0 12px 35px #556bffcc;
+  }
+
+  header.banner .imagen-banner {
+    max-width: 500px;
+    width: 50%;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+    transition: transform 0.4s ease;
+  }
+  header.banner .imagen-banner:hover {
+    transform: scale(1.05);
+  }
+
+  /* Fondo decorativo fade */
+  header.banner::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    background: rgba(255,44,121,0.25);
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 1;
+  }
+
+  /* --- MAIN --- */
+  main {
+    max-width: 1100px;
+    margin: 70px auto 120px;
+    padding: 0 15px;
+  }
+
+  main h2.section-title {
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: #3b4cca;
+    margin-bottom: 8px;
+    letter-spacing: 1.6px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  main p.section-subtitle {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* --- CARRUSEL --- */
   .carousel-container {
     position: relative;
   }
 
-  /* Carousel track */
   .carousel-track {
     display: flex;
-    gap: 20px;
+    gap: 28px;
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 12px;
+    padding-bottom: 18px;
   }
+  /* Scrollbar con estilo */
   .carousel-track::-webkit-scrollbar {
-    height: 8px;
-  }
-  .carousel-track::-webkit-scrollbar-thumb {
-    background-color: #4a90e2;
-    border-radius: 20px;
+    height: 9px;
   }
   .carousel-track::-webkit-scrollbar-track {
     background: #eaeaea;
-    border-radius: 20px;
+    border-radius: 10px;
+  }
+  .carousel-track::-webkit-scrollbar-thumb {
+    background-color: #ff2c79;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ff2c79cc;
   }
 
-  /* Productos */
+  /* TARJETA PRODUCTO */
   .product-card {
+    min-width: 240px;
     background: white;
-    border-radius: 20px;
-    min-width: 235px;
-    box-shadow: 0 6px 18px rgb(0 0 0 / 0.1);
-    user-select: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 26px;
+    box-shadow: 0 8px 25px rgba(255,44,121,0.2);
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
   .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 14px 30px rgb(0 0 0 / 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(255,44,121,0.45);
   }
   .product-image {
+    height: 210px;
     width: 100%;
-    height: 260px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     object-fit: contain;
-    background: #f7faff;
+    background: #fff0f5;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+    padding: 15px;
+    filter: drop-shadow(0 5px 7px rgba(255,44,121,0.25));
+    transition: transform 0.35s ease;
+  }
+  .product-card:hover .product-image {
+    transform: scale(1.07);
   }
   .product-info {
-    padding: 15px 18px 24px;
+    padding: 22px 20px 28px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .product-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-    color: #345ca8;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #3b4cca;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
   .product-series {
-    font-size: 0.8rem;
     color: #999;
-    margin-bottom: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
   }
   .product-price {
+    font-weight: 800;
+    font-size: 1.45rem;
+    color: #ff2c79;
+    text-shadow: 1px 1px 3px rgba(255,44,121,0.3);
+  }
+  .product-card button {
+    margin-top: 18px;
+    background: #3b4cca;
+    color: white;
     font-weight: 700;
-    font-size: 1.25rem;
-    color: #fc5c7d; /* rosa suave */
-  }
-
-  /* Navegación carousel */
-  .carousel-nav {
-    position: absolute;
-    top: 105%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 10px;
-  }
-  .dot {
-    width: 12px;
-    height: 12px;
-    background: #bbb;
-    border-radius: 50%;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 36px;
+    padding: 13px 0;
     cursor: pointer;
-    transition: background 0.3s ease;
+    box-shadow: 0 8px 30px rgba(59,76,202,0.43);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .dot.active {
-    background: #4a90e2;
-    box-shadow: 0 0 6px #4a90e2;
+  .product-card button:hover {
+    background: #2a3a9c;
+    box-shadow: 0 15px 55px rgba(42,58,156,0.76);
   }
 
-  /* Flechas */
+  /* NAVIGATION (Flechas) */
   .arrow-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(74, 144, 226, 0.8);
+    background: #ff2c79;
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     color: white;
-    font-size: 20px;
+    font-size: 26px;
     cursor: pointer;
-    user-select: none;
+    z-index: 3;
+    box-shadow: 0 6px 25px rgba(255,44,121,0.8);
     transition: background 0.3s ease;
-    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.6);
   }
   .arrow-btn:hover {
-    background: #4a90e2;
+    background: #fa3d96;
   }
   .arrow-left {
-    left: -18px;
+    left: -55px;
   }
   .arrow-right {
-    right: -18px;
+    right: -55px;
   }
 
-  /* Responsive */
-  @media (max-width: 720px) {
-    header {
+  /* Indicadores puntos */
+  .dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .dot {
+    width: 14px;
+    height: 14px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 4px #aaa;
+  }
+  .dot.active {
+    background: #ff2c79;
+    box-shadow: 0 0 12px #ff2c79cc;
+  }
+
+  /* FOOTER */
+  footer.page-footer {
+    width: 100%;
+    background: #3b4cca;
+    padding: 30px 0;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1020px) {
+    header.banner {
       flex-direction: column;
-      justify-content: center;
+      padding: 40px 30px 60px;
+      text-align: center;
     }
-    header img {
-      width: 180px;
-      margin-top: 30px;
+    header.banner .imagen-banner {
+      width: 70%;
+      margin-top: 40px;
     }
-    main {
-      margin: 40px 15px 60px;
+    .arrow-left {
+      left: 5px;
     }
-    .product-card {
-      min-width: 200px;
-    }
-    .product-image {
-      height: 220px;
+    .arrow-right {
+      right: 5px;
     }
   }
+  @media (max-width: 600px) {
+    header.banner h1 {
+      font-size: 2rem;
+    }
+    main {
+      margin: 45px 15px 90px;
+    }
+    .product-card {
+      min-width: 86vw;
+    }
+    .carousel-track {
+      gap: 16px;
+    }
+    .arrow-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 20px;
+    }
+    .arrow-left {
+      left: 5px;
+    }
+    .arrow-right {
+      right: 5px;
+    }
+  }
+
 </style>
 </head>
 <body>
 
-<header>
-  <div class="banner-text">
-    <div class="small-tag" aria-label="Etiqueta Nueva">NUEVO</div>
-    <h1>The 10 Cards Everybody Wants from The Dominance of God</h1>
-    <button onclick="alert('¡Gracias por tu interés! Más contenido pronto.');">Read Now</button>
+<header class="banner">
+  <div class="texto-banner" role="banner" aria-label="Contenido principal promocional">
+    <small>ONE PIECE</small>
+    <h1>The 10 Cards Everybody Wants<br>from The Dominance of God</h1>
+    <button onclick="alert('¡Gracias por leer!')" aria-label="Botón Leer Ahora">Read Now</button>
   </div>
-  <img src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Arte promocional cartel Pokémon TCG" />
+  <img class="imagen-banner" src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Cartel promocional Pokémon TCG" />
 </header>
 
 <main>
   <h2 class="section-title">BEST SELLERS</h2>
   <p class="section-subtitle">Check out these hot products.</p>
 
-  <div class="carousel-container">
-    <button class="arrow-btn arrow-left" aria-label="Producto anterior" onclick="scrollCarousel(-1)">&#8592;</button>
-    <div class="carousel-track" id="carousel-track" role="list">
+  <div class="carousel-container" aria-roledescription="carousel">
+    <button class="arrow-btn arrow-left" aria-label="Producto anterior" id="btnPrev">&#10094;</button>
+    <div class="carousel-track" id="carouselTrack" tabindex="0" role="list" aria-live="polite" aria-atomic="true">
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Magnificent Maestros Box" />
+      <!-- Producto 1 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Magnificent Maestros Box" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="Magnificent Maestros Box">Magnificent Maestros Box</div>
           <div class="product-series">Pokémon TCG</div>
-          <div class="product-price">$40,000</div>
+          <div class="product-price">$37,990</div>
+          <button onclick="alert('Producto agregado a carrito: Magnificent Maestros Box')" aria-label="Agregar Magnificent Maestros Box al carrito">Agregar al carrito</button>
         </div>
       </article>
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/swsh9/204_hires.png" alt="Delta Reign Booster Box" />
+      <!-- Producto 2 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/swsh9/204_hires.png" alt="Delta Reign Booster Box" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="Delta Reign Booster Box">Delta Reign Booster Box</div>
           <div class="product-series">Pokémon TCG</div>
-          <div class="product-price">$32,000</div>
+          <div class="product-price">$54,990</div>
+          <button onclick="alert('Producto agregado a carrito: Delta Reign Booster Box')" aria-label="Agregar Delta Reign Booster Box al carrito">Agregar al carrito</button>
         </div>
       </article>
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="30th Celebration Booster Bundle" />
+      <!-- Producto 3 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/swsh11/85.png" alt="30th Celebration Booster Bundle" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="30th Celebration Booster Bundle">30th Celebration Booster Bundle</div>
           <div class="product-series">Pokémon TCG</div>
           <div class="product-price">$250,000</div>
+          <button onclick="alert('Producto agregado a carrito: 30th Celebration Booster Bundle')" aria-label="Agregar 30th Celebration Booster Bundle al carrito">Agregar al carrito</button>
         </div>
       </article>
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/swsh6/145_hires.png" alt="Star Trek - Play Booster Display" />
+      <!-- Producto 4 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/swsh6/145_hires.png" alt="Star Trek - Play Booster Display" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="Star Trek - Play Booster Display">Star Trek - Play Booster Display</div>
           <div class="product-series">Pokémon TCG</div>
-          <div class="product-price">$35,000</div>
+          <div class="product-price">$49,990</div>
+          <button onclick="alert('Producto agregado a carrito: Star Trek - Play Booster Display')" aria-label="Agregar Star Trek Play Booster Display al carrito">Agregar al carrito</button>
         </div>
       </article>
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/swsh11/139_hires.png" alt="30th Celebration Elite Trainer Box" />
+      <!-- Producto 5 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/swsh11/139_hires.png" alt="30th Celebration Elite Trainer Box" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="30th Celebration Elite Trainer Box">30th Celebration Elite Trainer Box</div>
           <div class="product-series">Pokémon TCG</div>
           <div class="product-price">$275,000</div>
+          <button onclick="alert('Producto agregado a carrito: 30th Celebration Elite Trainer Box')" aria-label="Agregar 30th Celebration Elite Trainer Box al carrito">Agregar al carrito</button>
         </div>
       </article>
 
-      <article class="product-card" tabindex="0" role="listitem">
-        <img class="product-image" src="https://images.pokemontcg.io/swsh9/205_hires.png" alt="Delta Reign Elite Trainer Box" />
+      <!-- Producto 6 -->
+      <article class="product-card" role="listitem" tabindex="0">
+        <img src="https://images.pokemontcg.io/swsh9/205_hires.png" alt="Delta Reign Elite Trainer Box" class="product-image"/>
         <div class="product-info">
           <div class="product-title" title="Delta Reign Elite Trainer Box">Delta Reign Elite Trainer Box</div>
           <div class="product-series">Pokémon TCG</div>
           <div class="product-price">$290,000</div>
+          <button onclick="alert('Producto agregado a carrito: Delta Reign Elite Trainer Box')" aria-label="Agregar Delta Reign Elite Trainer Box al carrito">Agregar al carrito</button>
         </div>
       </article>
-
     </div>
-    <button class="arrow-btn arrow-right" aria-label="Producto siguiente" onclick="scrollCarousel(1)">&#8594;</button>
+
+    <div class="dots-container" aria-label="Indicadores de productos">
+      <span class="dot active" aria-current="true"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <button class="arrow-btn arrow-right" id="btnNext" aria-label="Producto siguiente">&#10095;</button>
   </div>
 </main>
 
+<footer class="page-footer">
+  © 2026 Pokémon TCG Store Chile. Todos los derechos reservados.
+</footer>
+
 <script>
-  const carousel = document.getElementById('carousel-track');
-  const productWidth = 255; // aprox producto + gap
-  function scrollCarousel(direction) {
-    carousel.scrollBy({left: direction * productWidth, behavior: 'smooth'});
+  // Scroll carousel buttons
+  const track = document.getElementById('carouselTrack');
+  const btnNext = document.getElementById('btnNext');
+  const btnPrev = document.getElementById('btnPrev') || document.createElement('button');
+  const dots = document.querySelectorAll('.dot');
+  const cardWidth = 268; // producto + gap aprox (240 + 28)
+  let scrollPosition = 0;
+
+  btnNext.onclick = () => {
+    scrollPosition += cardWidth;
+    if (scrollPosition > track.scrollWidth - track.clientWidth) {
+      scrollPosition = 0;
+    }
+    track.scrollTo({left: scrollPosition, behavior: 'smooth'});
+    updateDots();
+  };
+
+  // Create previous button if missing for usability
+  if (!btnPrev.id) {
+    const container = document.querySelector('.carousel-container');
+    btnPrev.className = 'arrow-btn arrow-left';
+    btnPrev.id = 'btnPrev';
+    btnPrev.setAttribute('aria-label', 'Producto anterior');
+    btnPrev.innerHTML = '&#10094;';
+    container.appendChild(btnPrev);
   }
+
+  btnPrev.onclick = () => {
+    scrollPosition -= cardWidth;
+    if (scrollPosition < 0) {
+      scrollPosition = track.scrollWidth - track.clientWidth;
+    }
+    track.scrollTo({left: scrollPosition, behavior: 'smooth'});
+    updateDots();
+  };
+
+  // Update dots activas según scroll
+  function updateDots() {
+    let index = Math.round(scrollPosition / cardWidth);
+    dots.forEach((dot, i) => {
+      if(i === index) {
+        dot.classList.add('active');
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.classList.remove('active');
+        dot.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  // Dots click to scroll
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      scrollPosition = i * cardWidth;
+      track.scrollTo({left: scrollPosition, behavior: 'smooth'});
+      updateDots();
+    });
+  });
+
+  // Inicia con dots actualizados
+  updateDots();
+
 </script>
 
 </body>
