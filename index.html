@@ -1,253 +1,265 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tienda Pokémon 30 Aniversario</title>
-  <style>
-    /* Fuentes y reset básico */
-    @import url('https://fonts.googleapis.com/css2?family=Pokémon&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pokémon TCG 30 Aniversario - Tienda Oficial</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  /* Reseteo básico */
+  * {
+    margin:0; padding:0; box-sizing: border-box;
+  }
 
-    body {
-      background: radial-gradient(circle at center, #f7d02c 0%, #3b4cca 90%);
-      color: #2a2a2a;
-      display: flex;
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#f5e1a4 0%,#ffcb05 100%);
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+  }
+
+  header {
+    padding: 40px 20px;
+    text-align: center;
+    background: #3b4cca;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: white;
+  }
+
+  header h1 {
+    font-weight: 800;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    text-shadow: 0 3px 5px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-weight: 300;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #ffde59;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.15);
+  }
+
+  main {
+    padding: 50px 20px;
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .producto {
+    background: white;
+    border-radius: 20px;
+    max-width: 350px;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .producto:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 35px 50px rgba(0,0,0,0.3);
+  }
+
+  .producto img {
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 3px solid #ffcb05;
+  }
+
+  .producto-info {
+    padding: 25px 20px 35px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .producto-info h2 {
+    color: #3b4cca;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .producto-info p {
+    flex-grow: 1;
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-align: justify;
+    line-height: 1.4;
+  }
+
+  .precio {
+    font-weight: 900;
+    font-size: 1.9rem;
+    color: #ff3e3e;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #00000033;
+  }
+
+  button {
+    background: linear-gradient(135deg,#ffcb05,#ffde59);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #3b4cca;
+    box-shadow: 0 8px 20px #ffcb05aa;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    align-self: center;
+    width: 100%;
+    max-width: 250px;
+    user-select: none;
+  }
+
+  button:hover {
+    background: linear-gradient(135deg,#ffde59,#ffcb05);
+    box-shadow: 0 12px 30px #ffcb05cc;
+    transform: scale(1.05);
+  }
+
+  section#carrito {
+    max-width: 700px;
+    background: white;
+    margin-top: 60px;
+    border-radius: 30px;
+    padding: 30px 40px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    color: #3b4cca;
+  }
+
+  #carrito h2 {
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 25px;
+    text-shadow: 0 1px 3px #ffde59aa;
+    font-size: 2rem;
+  }
+
+  #lista-carrito {
+    list-style: none;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-left: 0;
+    margin-bottom: 25px;
+    border-top: 3px solid #ffcb05;
+    border-bottom: 3px solid #ffcb05;
+  }
+
+  #lista-carrito li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #222;
+  }
+
+  #total {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-align: right;
+    color: #ff3e3e;
+    text-shadow: 1px 1px 3px #00000022;
+  }
+
+  #lista-carrito::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #lista-carrito::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+  }
+
+  #lista-carrito::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #ffcb05;
+  }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    main {
       flex-direction: column;
       align-items: center;
-      padding: 20px;
-      min-height: 100vh;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      color: white;
-      text-shadow: 0 0 10px #000;
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      font-family: 'Arial Black', Gadget, sans-serif;
-      margin-bottom: 10px;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    main {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      max-width: 1200px;
-      width: 100%;
-    }
-
     .producto {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-      max-width: 320px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 90vw;
+      margin-bottom: 40px;
     }
-
-    .producto:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.35);
-    }
-
-    .producto img {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: linear-gradient(45deg, #f7d02c, #3b4cca);
-      padding: 15px;
-    }
-
-    .producto-info {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .producto-info h2 {
-      color: #ff1c1c;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-      text-shadow: 1px 1px 3px #3b4cca;
-    }
-
-    .producto-info p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 20px;
-      font-style: italic;
-      height: 60px;
-    }
-
-    .precio {
-      font-size: 1.8rem;
-      color: #2a75bb;
-      font-weight: 800;
-      margin-bottom: 25px;
-      text-shadow: 1px 1px 2px #f7d02c;
-    }
-
-    button {
-      display: inline-block;
-      background: #ffcb05;
-      color: #2a75bb;
-      border: 3px solid #2a75bb;
-      border-radius: 40px;
-      padding: 12px 40px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px #b58e09 inset;
-      user-select: none;
-    }
-
-    button:hover {
-      background: #f0b700;
-      border-color: #1d516b;
-      box-shadow: 0 6px #945d00 inset;
-      transform: scale(1.05);
-    }
-
-    #carrito {
-      margin-top: 50px;
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      color: #2a75bb;
-      font-weight: 700;
-    }
-
-    #carrito h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 2px #ffcb05;
-    }
-
-    #lista-carrito {
-      list-style: none;
-      max-height: 200px;
-      overflow-y: auto;
-      padding-left: 0;
-      margin-bottom: 20px;
-      border-top: 2px solid #2a75bb;
-      border-bottom: 2px solid #2a75bb;
-    }
-
-    #lista-carrito li {
-      padding: 10px 15px;
-      border-bottom: 1px solid #c5c5c5;
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.1rem;
-      color: #444;
-    }
-
-    #total {
-      font-size: 1.8rem;
-      text-align: right;
-      color: #ff1c1c;
-      text-shadow: 1px 1px 3px #000;
-    }
-
-    /* Scrollbar para carrito */
-    #lista-carrito::-webkit-scrollbar {
-      width: 8px;
-    }
-    #lista-carrito::-webkit-scrollbar-thumb {
-      background-color: #ffcb05;
-      border-radius: 10px;
-    }
-    #lista-carrito::-webkit-scrollbar-track {
-      background: #eee;
-    }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-      }
-      .producto {
-        max-width: 90%;
-      }
-      #carrito {
-        max-width: 90%;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Tienda Oficial Pokémon 30 Aniversario</h1>
-    <p>Venta exclusiva: Cajas Pokémon TCG edición especial</p>
-  </header>
+<header>
+  <h1>Pokémon TCG 30 Aniversario</h1>
+  <p>¡Compra tu caja edición especial ahora!</p>
+</header>
 
-  <main>
-    <article class="producto">
-      <img src="https://images.pokemontcg.io/swsh5/150_hires.png" alt="Caja Pokémon 30 Aniversario" />
-      <div class="producto-info">
-        <h2>Caja Pokémon 30 Aniversario</h2>
-        <p>Edición oficial con contenido exclusivo para coleccionistas.</p>
-        <div class="precio">$250.000 CLP</div>
-        <button onclick="agregarAlCarrito('Caja Pokémon 30 Aniversario', 250000)">Agregar al carrito</button>
-      </div>
-    </article>
-  </main>
+<main>
+  <article class="producto" tabindex="0" aria-label="Caja Pokémon 30 Aniversario">
+    <img src="https://images.pokemontcg.io/swsh5/150_hires.png" alt="Caja Pokémon 30 Aniversario" />
+    <div class="producto-info">
+      <h2>Caja Pokémon 30 Aniversario</h2>
+      <p>Edición oficial con cartas y contenido exclusivo de colección para fanáticos de Pokémon. Perfecta para regalar o comenzar una colección.</p>
+      <div class="precio">$250.000 CLP</div>
+      <button aria-label="Agregar Caja Pokémon 30 Aniversario al carrito" onclick="agregarAlCarrito('Caja Pokémon 30 Aniversario', 250000)">Agregar al carrito</button>
+    </div>
+  </article>
+  <!-- Puedes agregar más productos aquí repitiendo la estructura del artículo-->
+</main>
 
-  <section id="carrito">
-    <h2>Carrito de Compras</h2>
-    <ul id="lista-carrito"></ul>
-    <p>Total: $<span id="total">0</span> CLP</p>
-  </section>
+<section id="carrito" aria-live="polite" aria-relevant="additions removals">
+  <h2>Carrito de compras</h2>
+  <ul id="lista-carrito" role="list"></ul>
+  <p id="total">Total: $0 CLP</p>
+</section>
 
-  <script>
-    const carrito = [];
+<script>
+  const carrito = [];
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({nombre, precio});
-      actualizarCarrito();
-    }
+  function agregarAlCarrito(nombre, precio) {
+    carrito.push({nombre, precio});
+    actualizarCarrito();
+  }
 
-    function actualizarCarrito() {
-      const lista = document.getElementById('lista-carrito');
-      const totalElemento = document.getElementById('total');
-      lista.innerHTML = '';
-      let total = 0;
+  function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    const totalElemento = document.getElementById('total');
+    lista.innerHTML = '';
 
-      carrito.forEach((item, i) => {
-        const li = document.createElement('li');
-        li.textContent = item.nombre + ' - $' + item.precio.toLocaleString();
-        lista.appendChild(li);
-        total += item.precio;
-      });
+    let total = 0;
+    carrito.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+      lista.appendChild(li);
+      total += item.precio;
+    });
 
-      totalElemento.textContent = total.toLocaleString();
-    }
-  </script>
-  
+    totalElemento.textContent = `Total: $${total.toLocaleString()} CLP`;
+  }
+</script>
+
 </body>
 </html>
