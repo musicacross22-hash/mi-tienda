@@ -3,254 +3,311 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pokémon TCG 30 Aniversario - Tienda Oficial</title>
-
+<title>Tienda Pokémon TCG 30 Aniversario</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap');
-
-  /* Reset */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
   body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(130deg, #fefefe, #cde7f9);
-    color: #333;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
+    background: #f9fafc;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
   }
-
   header {
-    width: 100%;
-    background: #3b4cca;
-    color: #fff7a1;
-    padding: 50px 20px 60px;
-    box-shadow: 0 8px 15px rgba(59, 76, 202, 0.5);
+    background: linear-gradient(135deg, #4a90e2, #a1c4fd);
     display: flex;
-    flex-direction: column;
+    padding: 40px;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
   }
-
-  header .logo {
-    width: 180px;
-    margin-bottom: 20px;
+  header .banner-text {
+    max-width: 600px;
   }
-
-  header .logo img {
-    width: 100%;
+  header .small-tag {
+    background: #ff5f7e;
+    color: white;
+    padding: 6px 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
   }
-
   header h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 3.8rem;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    margin-bottom: 10px;
-  }
-
-  header p {
     font-weight: 700;
-    font-size: 1.5rem;
-    color: #fff3b0;
-    font-style: italic;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 2.6rem;
+    color: #111;
+    margin-bottom: 18px;
   }
-
-  main {
-    max-width: 960px;
-    background: #fff;
-    border-radius: 25px;
-    padding: 50px 40px 60px;
-    margin: -40px 20px 60px; /* overlapping header */
-    box-shadow: 0 25px 60px rgba(59, 76, 202, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .section-title {
-    font-weight: 800;
-    font-size: 3.5rem;
-    color: #3b4cca;
-    letter-spacing: 2px;
-    margin-bottom: 50px;
-    font-family: 'Pacifico', cursive;
-    text-shadow:
-      2px 2px 0 #ffde59,
-      5px 5px 10px rgba(0,0,0,0.1);
-  }
-
-  .products-container {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .product-card {
-    background: #f9faff;
-    border-radius: 30px;
-    box-shadow: 0 12px 35px rgba(59, 76, 202, 0.25);
-    width: 320px;
-    padding: 30px 25px 40px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
-  }
-
-  .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 22px 45px rgba(59, 76, 202, 0.4);
-  }
-
-  .product-image {
-    width: 100%;
-    border-radius: 22px;
-    box-shadow: 0 6px 20px rgba(59, 76, 202, 0.25);
-    transition: transform 0.35s ease;
-  }
-
-  .product-card:hover .product-image {
-    transform: scale(1.05);
-  }
-
-  .product-title {
-    font-weight: 700;
-    font-size: 1.7rem;
-    color: #2f3dab;
-    margin: 25px 0 12px;
-    letter-spacing: 0.5px;
-  }
-
-  .product-price {
-    font-size: 1.6rem;
-    color: #ff7f20;
-    font-weight: 800;
-    margin-bottom: 28px;
-    text-shadow: 1px 1px 3px #bb6b1a;
-  }
-
-  .button {
-    background: linear-gradient(135deg, #ffcb05 0%, #ff9c26 100%);
+  header button {
+    font-weight: 600;
+    padding: 12px 28px;
+    font-size: 1rem;
     border: none;
-    color: #3b4cca;
-    font-weight: 800;
-    font-size: 1.2rem;
-    padding: 15px 40px;
-    border-radius: 50px;
-    box-shadow: 0 8px 25px #ff9c26aa;
+    background: #222;
+    color: white;
+    border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
+  }
+  header button:hover {
+    background: #444;
+  }
+  header img {
+    width: 220px;
+    max-height: 280px;
+    object-fit: contain;
     user-select: none;
   }
 
-  .button:hover {
-    background: linear-gradient(145deg, #ff9c26 0%, #ffcb05 100%);
-    box-shadow: 0 12px 40px #fda617cc;
-    transform: scale(1.05);
+  main {
+    max-width: 1120px;
+    margin: 60px auto;
+    padding: 0 20px 80px;
   }
 
-  .actions {
+  .section-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+  }
+  .section-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+
+  /* Carousel container */
+  .carousel-container {
+    position: relative;
+  }
+
+  /* Carousel track */
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+  }
+  .carousel-track::-webkit-scrollbar {
+    height: 8px;
+  }
+  .carousel-track::-webkit-scrollbar-thumb {
+    background-color: #4a90e2;
+    border-radius: 20px;
+  }
+  .carousel-track::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 20px;
+  }
+
+  /* Productos */
+  .product-card {
+    background: white;
+    border-radius: 20px;
+    min-width: 235px;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.1);
+    user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgb(0 0 0 / 0.15);
+  }
+  .product-image {
     width: 100%;
-    max-width: 600px;
-    margin-top: 45px;
+    height: 260px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    object-fit: contain;
+    background: #f7faff;
+  }
+  .product-info {
+    padding: 15px 18px 24px;
+  }
+  .product-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #345ca8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .product-series {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .product-price {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #fc5c7d; /* rosa suave */
+  }
+
+  /* Navegación carousel */
+  .carousel-nav {
+    position: absolute;
+    top: 105%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .dot.active {
+    background: #4a90e2;
+    box-shadow: 0 0 6px #4a90e2;
   }
 
-  .actions button {
-    flex: 1 1 180px;
+  /* Flechas */
+  .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(74, 144, 226, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.6);
+  }
+  .arrow-btn:hover {
+    background: #4a90e2;
+  }
+  .arrow-left {
+    left: -18px;
+  }
+  .arrow-right {
+    right: -18px;
   }
 
   /* Responsive */
-
-  @media (max-width: 730px) {
-    main {
-      margin: -30px 15px 40px;
-      padding: 35px 25px 50px;
-    }
-
-    .products-container {
+  @media (max-width: 720px) {
+    header {
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
     }
-
+    header img {
+      width: 180px;
+      margin-top: 30px;
+    }
+    main {
+      margin: 40px 15px 60px;
+    }
     .product-card {
-      width: 90%;
-      max-width: 400px;
-      margin-bottom: 35px;
+      min-width: 200px;
     }
-
-    .actions {
-      max-width: 90vw;
-      gap: 20px;
+    .product-image {
+      height: 220px;
     }
   }
-
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo" aria-label="Logo oficial Pokémon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Pok%C3%A9mon_logo.svg" alt="Logo Pokémon" />
+  <div class="banner-text">
+    <div class="small-tag" aria-label="Etiqueta Nueva">NUEVO</div>
+    <h1>The 10 Cards Everybody Wants from The Dominance of God</h1>
+    <button onclick="alert('¡Gracias por tu interés! Más contenido pronto.');">Read Now</button>
   </div>
-  <h1>Pokémon TCG 30 Aniversario</h1>
-  <p>¡Compra tu caja edición especial ahora!</p>
+  <img src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Arte promocional cartel Pokémon TCG" />
 </header>
 
 <main>
-  <div class="section-title" aria-label="Título sección novedades">¿Qué hay de nuevo?</div>
-  <div class="products-container">
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario Urshifu V Single Strike" />
-      <h2 class="product-title">Caja Pokémon 30 Aniversario</h2>
-      <div class="product-price">$250.000 CLP</div>
-    </article>
+  <h2 class="section-title">BEST SELLERS</h2>
+  <p class="section-subtitle">Check out these hot products.</p>
 
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="Caja Pokémon 30 Aniversario Urshifu V Single Strike" />
-      <h2 class="product-title">Caja Pokémon 30 Aniversario</h2>
-      <div class="product-price">$250.000 CLP</div>
-    </article>
-  </div>
+  <div class="carousel-container">
+    <button class="arrow-btn arrow-left" aria-label="Producto anterior" onclick="scrollCarousel(-1)">&#8592;</button>
+    <div class="carousel-track" id="carousel-track" role="list">
 
-  <div class="actions" role="region" aria-label="Botones de contacto y pagos">
-    <button class="button" onclick="abrirWhatsApp()">
-      Contacto WhatsApp
-    </button>
-    <button class="button" onclick="mostrarDescuentos()">
-      Descuentos
-    </button>
-    <button class="button" onclick="abrirMetodosPago()">
-      Métodos de Pago
-    </button>
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/bw7/115_hires.png" alt="Magnificent Maestros Box" />
+        <div class="product-info">
+          <div class="product-title" title="Magnificent Maestros Box">Magnificent Maestros Box</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$40,000</div>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh9/204_hires.png" alt="Delta Reign Booster Box" />
+        <div class="product-info">
+          <div class="product-title" title="Delta Reign Booster Box">Delta Reign Booster Box</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$32,000</div>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh11/85.png" alt="30th Celebration Booster Bundle" />
+        <div class="product-info">
+          <div class="product-title" title="30th Celebration Booster Bundle">30th Celebration Booster Bundle</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$250,000</div>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh6/145_hires.png" alt="Star Trek - Play Booster Display" />
+        <div class="product-info">
+          <div class="product-title" title="Star Trek - Play Booster Display">Star Trek - Play Booster Display</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$35,000</div>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh11/139_hires.png" alt="30th Celebration Elite Trainer Box" />
+        <div class="product-info">
+          <div class="product-title" title="30th Celebration Elite Trainer Box">30th Celebration Elite Trainer Box</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$275,000</div>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="listitem">
+        <img class="product-image" src="https://images.pokemontcg.io/swsh9/205_hires.png" alt="Delta Reign Elite Trainer Box" />
+        <div class="product-info">
+          <div class="product-title" title="Delta Reign Elite Trainer Box">Delta Reign Elite Trainer Box</div>
+          <div class="product-series">Pokémon TCG</div>
+          <div class="product-price">$290,000</div>
+        </div>
+      </article>
+
+    </div>
+    <button class="arrow-btn arrow-right" aria-label="Producto siguiente" onclick="scrollCarousel(1)">&#8594;</button>
   </div>
 </main>
 
-<footer aria-hidden="true" style="width:100%; height:80px; background:#ffcb05; border-top:5px solid #3b4cca; box-shadow: 0 -4px 10px #3b4cca55;"></footer>
-
 <script>
-  function abrirWhatsApp() {
-    const numero = '56912345678'; // Cambia por tu número con código país sin signos
-    const url = `https://wa.me/${numero}`;
-    window.open(url, '_blank');
-  }
-
-  function mostrarDescuentos() {
-    alert('¡Aprovecha nuestros descuentos exclusivos! Contáctanos por WhatsApp para más información.');
-  }
-
-  function abrirMetodosPago() {
-    const url = 'https://www.tusitiodepagos.cl'; // Cambia por tu sitio de pagos
-    window.open(url, '_blank');
+  const carousel = document.getElementById('carousel-track');
+  const productWidth = 255; // aprox producto + gap
+  function scrollCarousel(direction) {
+    carousel.scrollBy({left: direction * productWidth, behavior: 'smooth'});
   }
 </script>
 
