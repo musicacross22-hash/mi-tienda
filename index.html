@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda Pokémon 30 Aniversario - Venta de Cajas TCG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f5;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #ff3e3e;
+      text-align: center;
+    }
+    .producto {
+      background: white;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ddd;
+      text-align: center;
+    }
+    .producto img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .producto h2 {
+      margin-top: 10px;
+      color: #2a75bb;
+    }
+    .precio {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #28a745;
+    }
+    button {
+      background-color: #2a75bb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1c4a82;
+    }
+    #carrito {
+      background: white;
+      max-width: 500px;
+      margin: 30px auto 0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ddd;
+    }
+    #carrito h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    #lista-carrito {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+    #lista-carrito li {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    #total {
+      font-weight: bold;
+      font-size: 18px;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tienda Pokémon 30 Aniversario</h1>
+
+  <div class="producto">
+    <img src="https://images.pokemontcg.io/swsh5/150_hires.png" alt="Caja Pokémon 30 Aniversario" />
+    <h2>Caja Pokémon 30 Aniversario</h2>
+    <p>Venta de caja oficial Pokémon TCG del 30 aniversario.</p>
+    <p class="precio">$250.000 CLP</p>
+    <button onclick="agregarAlCarrito('Caja Pokémon 30 Aniversario', 250000)">Agregar al Carrito</button>
+  </div>
+
+  <div id="carrito">
+    <h3>Carrito de Compras</h3>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span> CLP</p>
+  </div>
+
+  <script>
+    let carrito = [];
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({nombre, precio});
+      mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      const totalElemento = document.getElementById('total');
+      lista.innerHTML = '';
+      let total = 0;
+      carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = item.nombre + ' - $' + item.precio.toLocaleString();
+        lista.appendChild(li);
+        total += item.precio;
+      });
+      totalElemento.textContent = total.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
