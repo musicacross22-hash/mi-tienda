@@ -3,325 +3,216 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tienda Pokémon TCG - Productos Destacados</title>
+<title>Pokémon TCG 30 Aniversario - Tienda Oficial</title>
 <style>
+  /* Fuentes */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
   body {
+    margin: 0; padding: 0;
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-color: #f2f2f2;
-    color: #222;
-    padding: 20px;
+    background: #f7f7f7;
+    color: #333;
   }
-
-  header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  header h1 {
-    font-weight: 800;
-    font-size: 2.8rem;
-    color: #3b4cca;
-    margin-bottom: 5px;
-  }
-
-  header .accent-line {
-    width: 70px;
-    height: 5px;
-    background-color: #ff3e3e;
-    margin: 0 auto 20px;
-    border-radius: 10px;
-  }
-
-  .carousel {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  .carousel-track {
+  /* Navegación */
+  nav {
+    background: #000;
+    color: white;
     display: flex;
-    transition: transform 0.4s ease-in-out;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav .logo {
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #ffcb05;
+    margin-right: 50px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  nav ul li {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  nav ul li:hover {
+    color: #ffcb05;
   }
 
-  .producto {
+  /* Contenedor principal */
+  main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  h2.seccion-titulo {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #3b4cca;
+  }
+
+  /* Carrusel doble */
+
+  .carrusel-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .panel {
     background: white;
     border-radius: 20px;
-    margin: 10px;
-    min-width: 280px;
-    flex: 0 0 auto;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 540px;
+    flex: 1 1 480px;
     overflow: hidden;
-  }
-
-  .producto img {
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    height: 200px;
-    object-fit: contain;
-    background: #ecf0f1;
-  }
-
-  .producto .info {
-    padding: 15px 20px 25px;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
 
-  .producto .titulo {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #2a75bb;
-    flex-grow: 1;
+  .panel img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
-  .precio {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #ff3e3e;
+  .panel-content {
+    padding: 25px 30px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
   }
 
-  .precio-old {
-    text-decoration: line-through;
-    color: #999;
-    font-weight: 400;
-    margin-right: 10px;
-  }
-
-  .boton {
-    background-color: #3b4cca;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 25px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-  }
-
-  .boton:hover {
-    background-color: #2a4290;
-  }
-
-  /* Badge oferta */
-  .badge-oferta {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: black;
-    color: white;
-    font-weight: 900;
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    box-shadow: 0 0 6px #ff3e3e;
-  }
-
-  /* Navegación */
-  .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #3b4ccacc;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    padding: 8px 13px;
-    cursor: pointer;
-    border-radius: 50%;
-    user-select: none;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-  }
-
-  .nav-btn:hover {
-    background-color: #2a429099;
-  }
-
-  .nav-prev {
-    left: 5px;
-  }
-
-  .nav-next {
-    right: 5px;
-  }
-
-  /* Indicador página */
-  .page-indicator {
-    text-align: center;
-    margin-top: 15px;
+  .panel-content h3 {
     font-weight: 700;
     color: #3b4cca;
+    font-size: 1.8rem;
+  }
+
+  .panel-content p {
+    color: #444;
     font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .btn-info {
+    background: #000;
+    border: none;
+    padding: 14px 40px;
+    font-weight: 700;
+    color: #ffcb05;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px #ffcb05aa;
+  }
+
+  .btn-info:hover {
+    background: #222;
+  }
+
+  /* Flechas y puntos */
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0 40px;
+  }
+
+  .nav-btn {
+    width: 16px;
+    height: 16px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px #ccc;
+    transition: background 0.3s ease;
+  }
+
+  .nav-btn.active {
+    background: #3b4cca;
+    box-shadow: 0 0 8px #3b4ccaaa;
+  }
+
+  /* Footer decorativo */
+  footer {
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(90deg, #ffcb05, #d4a200, #ffcb05);
+    border-top: 5px solid #a37900;
+    margin-top: 50px;
   }
 
   /* Responsive */
-  @media (max-width: 720px) {
-    .producto {
-      min-width: 220px;
-    }
-  }
 
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 2rem;
+  @media (max-width: 1150px) {
+    .carrusel-container {
+      flex-direction: column;
+      align-items: center;
     }
-    .producto {
-      min-width: 180px;
+    .panel {
+      max-width: 90vw;
+      margin-bottom: 30px;
     }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Productos Destacados</h1>
-  <div class="accent-line"></div>
-</header>
+<nav role="navigation">
+  <div class="logo">Pokémon</div>
+  <ul>
+    <li>Expansiones</li>
+    <li>Cartas</li>
+    <li>Cómo jugar</li>
+    <li>Noticias</li>
+    <li>Dónde comprar</li>
+  </ul>
+</nav>
 
-<div class="carousel" aria-label="Carrusel de productos destacados">
-  <button class="nav-btn nav-prev" aria-label="Producto anterior">&#8592;</button>
-  <div class="carousel-track" id="carousel-track">
+<main>
+  <h2 class="seccion-titulo">¿QUÉ HAY DE NUEVO?</h2>
 
-    <!-- Producto 1 -->
-    <div class="producto" tabindex="0">
-      <div style="position:relative;">
-        <img src="https://images.pokemontcg.io/swsh1/37_hires.png" alt="Charizard Ex Special Collection" />
-        <div class="badge-oferta">Oferta</div>
-      </div>
-      <div class="info">
-        <div class="titulo">Charizard Ex Special Collection - Español</div>
-        <div>
-          <span class="precio-old">$37,990</span>
-          <span class="precio">$22,990</span>
-        </div>
-        <button class="boton" aria-label="Agregar Charizard Ex Special Collection al carrito">Agregar al carrito</button>
-      </div>
-    </div>
+  <div class="carrusel-container">
 
-    <!-- Producto 2 -->
-    <div class="producto" tabindex="0">
-      <img src="https://images.pokemontcg.io/swsh11/114_hires.png" alt="Mega Evolution Phantasmal Flames - Booster Bundle" />
-      <div class="info">
-        <div class="titulo">Mega Evolution Phantasmal Flames - Booster Bundle - Inglés</div>
-        <div class="precio">$54,990</div>
-        <button class="boton" aria-label="Agregar Mega Evolution Phantasmal Flames al carrito">Agregar al carrito</button>
+    <section class="panel" aria-label="Productos de Megaevolución - Dominio Delta">
+      <img src="https://images.pokemontcg.io/swsh9/168_hires.png" alt="Productos de Megaevolución - Dominio Delta" />
+      <div class="panel-content">
+        <h3>Productos de Megaevolución - Dominio Delta de JCC Pokémon</h3>
+        <p>Explora las nuevas cajas de Megaevolución y Dominio Delta. Colecciónalas todas y disfruta de cartas exclusivas perfectas para tus batallas Pokémon.</p>
+        <button class="btn-info" aria-label="Más información sobre Megaevolución - Dominio Delta">¡Más información!</button>
       </div>
-    </div>
+    </section>
 
-    <!-- Producto 3 -->
-    <div class="producto" tabindex="0">
-      <div style="position:relative;">
-        <img src="https://images.pokemontcg.io/swsh11/116_hires.png" alt="Mega Evolution: Ascended Heroes - Elite Trainer Box" />
-        <div class="badge-oferta">Oferta</div>
+    <section class="panel" aria-label="Cartas Rotom Calor ex y más">
+      <img src="https://images.pokemontcg.io/swsh10/165_hires.png" alt="Rotom Calor ex y más Pokémon" />
+      <div class="panel-content">
+        <h3>Rotom Calor ex, Delibird y más en Dominio Delta</h3>
+        <p>Descubre a Rotom Calor ex y otros Pokémon increíbles del set Dominio Delta. ¡Prepara tu mazo para nuevas estrategias llenas de poder!</p>
+        <button class="btn-info" aria-label="Más información sobre Rotom Calor ex">¡Más información!</button>
       </div>
-      <div class="info">
-        <div class="titulo">Mega Evolution: Ascended Heroes - Elite Trainer Box - Inglés</div>
-        <div>
-          <span class="precio-old">$149,990</span>
-          <span class="precio">$129,990</span>
-        </div>
-        <button class="boton" aria-label="Agregar Ascended Heroes al carrito">Agregar al carrito</button>
-      </div>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="producto" tabindex="0">
-      <img src="https://images.pokemontcg.io/bw9/127_hires.png" alt="Mega Evolution (Base Set) - Booster Bundle" />
-      <div class="info">
-        <div class="titulo">Mega Evolution (Base Set) - Booster Bundle - Inglés</div>
-        <div class="precio">$49,990</div>
-        <button class="boton" aria-label="Agregar Mega Evolution Base Set al carrito">Agregar al carrito</button>
-      </div>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="producto" tabindex="0">
-      <div style="position:relative;">
-        <img src="https://images.pokemontcg.io/bw12/149_hires.png" alt="Mega Evolution: Ascended Heroes - Elite Trainer Box Español" />
-        <div class="badge-oferta">Oferta</div>
-      </div>
-      <div class="info">
-        <div class="titulo">Mega Evolution: Ascended Heroes - Elite Trainer Box - Español</div>
-        <div>
-          <span class="precio-old">$79,990</span>
-          <span class="precio">$52,490</span>
-        </div>
-        <button class="boton" aria-label="Agregar Ascended Heroes Español al carrito">Agregar al carrito</button>
-      </div>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="producto" tabindex="0">
-      <div style="position:relative;">
-        <img src="https://images.pokemontcg.io/bw12/150_hires.png" alt="Mega Evolution Perfect Order - Elite Trainer Box" />
-        <div class="badge-oferta">Oferta</div>
-      </div>
-      <div class="info">
-        <div class="titulo">Mega Evolution Perfect Order - Elite Trainer Box - Inglés</div>
-        <div>
-          <span class="precio-old">$68,990</span>
-          <span class="precio">$49,990</span>
-        </div>
-        <button class="boton" aria-label="Agregar Mega Evolution Perfect Order al carrito">Agregar al carrito</button>
-      </div>
-    </div>
+    </section>
 
   </div>
-  <button class="nav-btn nav-next" aria-label="Producto siguiente">&#8594;</button>
-</div>
 
-<div class="page-indicator" id="page-indicator">1/6</div>
+</main>
 
-<script>
-  const track = document.getElementById('carousel-track');
-  const prevBtn = document.querySelector('.nav-prev');
-  const nextBtn = document.querySelector('.nav-next');
-  const products = document.querySelectorAll('.producto');
-  const pageIndicator = document.getElementById('page-indicator');
-  let currentPosition = 0;
-  const visibleCards = 3;
-  const totalCards = products.length;
-
-  function updateCarousel() {
-    const cardWidth = products[0].offsetWidth + 20; // producto + margin
-    track.style.transform = `translateX(-${currentPosition * cardWidth}px)`;
-    let maxPosition = totalCards - visibleCards;
-    if (maxPosition < 0) maxPosition = 0;
-    if (currentPosition > maxPosition) currentPosition = maxPosition;
-    if (currentPosition < 0) currentPosition = 0;
-    pageIndicator.textContent = `${currentPosition + 1}/${maxPosition + 1}`;
-  }
-
-  prevBtn.addEventListener('click', () => {
-    currentPosition--;
-    if (currentPosition < 0) currentPosition = 0;
-    updateCarousel();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    let maxPosition = totalCards - visibleCards;
-    if (maxPosition < 0) maxPosition = 0;
-    currentPosition++;
-    if (currentPosition > maxPosition) currentPosition = maxPosition;
-    updateCarousel();
-  });
-
-  // Inicializar carousel
-  updateCarousel();
-</script>
+<footer></footer>
 
 </body>
 </html>
