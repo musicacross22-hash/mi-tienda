@@ -3,104 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tienda Pokémon 30 Aniversario - Venta de Cajas TCG</title>
+  <title>Tienda Oficial Pokémon 30 Aniversario</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f5;
-      padding: 20px;
-      color: #333;
+    /* Reset y tipografía */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    h1 {
-      color: #ff3e3e;
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
       text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px #ffcb05;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffcb05;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1200px;
+      background: #ffffff22;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .producto {
       background: white;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #ddd;
-      text-align: center;
+      border-radius: 15px;
+      width: 320px;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
     }
     .producto img {
-      max-width: 100%;
-      border-radius: 8px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
-    .producto h2 {
-      margin-top: 10px;
-      color: #2a75bb;
+    .producto-info {
+      padding: 20px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .producto-info h2 {
+      margin-bottom: 10px;
+      color: #2a5298;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .producto-info p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #555;
     }
     .precio {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 10px 0;
-      color: #28a745;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff3e3e;
+      margin-bottom: 20px;
     }
     button {
-      background-color: #2a75bb;
-      color: white;
+      background-color: #2a5298;
       border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      font-size: 16px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
       cursor: pointer;
+      padding: 12px 30px;
+      font-size: 1rem;
       transition: background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(234, 60, 58, 0.5);
     }
     button:hover {
-      background-color: #1c4a82;
+      background-color: #21427d;
     }
+
     #carrito {
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 50px;
       background: white;
-      max-width: 500px;
-      margin: 30px auto 0;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #ddd;
-    }
-    #carrito h3 {
-      margin-top: 0;
+      border-radius: 15px;
+      padding: 25px 40px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
       color: #333;
+    }
+    #carrito h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #2a5298;
+      text-align: center;
     }
     #lista-carrito {
       list-style: none;
-      padding-left: 0;
-      margin-bottom: 10px;
+      padding: 0;
+      margin-bottom: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
     }
     #lista-carrito li {
-      padding: 5px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
     }
     #total {
-      font-weight: bold;
-      font-size: 18px;
-      color: #28a745;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: right;
+      color: #ff3e3e;
     }
+    /* Scrollbar para carrito */
+    #lista-carrito::-webkit-scrollbar {
+      width: 6px;
+    }
+    #lista-carrito::-webkit-scrollbar-thumb {
+      background-color: #2a5298;
+      border-radius: 3px;
+    }
+    #lista-carrito::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+      .producto {
+        width: 90%;
+      }
+      #carrito {
+        padding: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <h1>Tienda Pokémon 30 Aniversario</h1>
+  <header>
+    <h1>Tienda Oficial Pokémon 30 Aniversario</h1>
+    <p>Venta exclusiva de cajas TCG edición especial</p>
+  </header>
 
-  <div class="producto">
-    <img src="https://images.pokemontcg.io/swsh5/150_hires.png" alt="Caja Pokémon 30 Aniversario" />
-    <h2>Caja Pokémon 30 Aniversario</h2>
-    <p>Venta de caja oficial Pokémon TCG del 30 aniversario.</p>
-    <p class="precio">$250.000 CLP</p>
-    <button onclick="agregarAlCarrito('Caja Pokémon 30 Aniversario', 250000)">Agregar al Carrito</button>
-  </div>
+  <main>
+    <div class="producto">
+      <img src="https://images.pokemontcg.io/swsh5/150_hires.png" alt="Caja Pokémon 30 Aniversario" />
+      <div class="producto-info">
+        <h2>Caja Pokémon 30 Aniversario</h2>
+        <p>Edición oficial del 30 aniversario con contenido exclusivo para coleccionistas.</p>
+        <div class="precio">$250.000 CLP</div>
+        <button onclick="agregarAlCarrito('Caja Pokémon 30 Aniversario', 250000)">Agregar al Carrito</button>
+      </div>
+    </div>
+    
+    <!-- Puedes añadir más productos aquí si quieres -->
+  </main>
 
-  <div id="carrito">
-    <h3>Carrito de Compras</h3>
+  <section id="carrito">
+    <h2>Carrito de Compras</h2>
     <ul id="lista-carrito"></ul>
     <p>Total: $<span id="total">0</span> CLP</p>
-  </div>
+  </section>
 
   <script>
-    let carrito = [];
+    const carrito = [];
+
     function agregarAlCarrito(nombre, precio) {
-      carrito.push({nombre, precio});
+      carrito.push({ nombre, precio });
       mostrarCarrito();
     }
 
@@ -109,15 +221,17 @@
       const totalElemento = document.getElementById('total');
       lista.innerHTML = '';
       let total = 0;
+
       carrito.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = item.nombre + ' - $' + item.precio.toLocaleString();
         lista.appendChild(li);
         total += item.precio;
       });
+
       totalElemento.textContent = total.toLocaleString();
     }
   </script>
-
+  
 </body>
 </html>
